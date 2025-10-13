@@ -1,0 +1,13 @@
+@use "../../../styles/GlobalTheme";
+
+.header {
+    width: 100%;
+    flex: 0 1 auto;
+    min-height: 135px;
+    background-color: GlobalTheme.$primaryStructuralBackgroundColor;
+    color: GlobalTheme.$primaryStructuralColor;
+}
+
+.button {
+    color:GlobalTheme.$primaryStructuralColor;
+}
