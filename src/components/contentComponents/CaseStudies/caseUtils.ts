@@ -1,6 +1,6 @@
-import { CaseStudiesRoute } from "../../../configuration/navigation";
+import { caseStudiesRoute } from "../../../configuration/navigation";
 
-export const ConstructFullCaseRoute = (relativeRoute:string):string => {
+export const constructFullCaseRoute = (relativeRoute:string):string => {
     const trimmedRoute = relativeRoute.startsWith("/") ? relativeRoute.substring(1) : relativeRoute;
-    return `${CaseStudiesRoute.Route}/${trimmedRoute}`
+    return `${caseStudiesRoute.route}/${trimmedRoute}`
 }

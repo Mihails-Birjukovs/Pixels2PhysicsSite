@@ -1,18 +1,20 @@
 import { CaseStandaloneExample } from "../Cases/CaseStandaloneExample";
 import { CaseExample } from "../Cases/CaseExamples";
-import type { ICollaboration } from "../CaseStudiesCard";
+import type { ICaseStudy } from "../CaseStudiesCard";
+import { CasePractice } from "../Cases/CasePractice";
 
 const lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nec nunc vel pulvinar. 
 Vestibulum consectetur aliquet velit, ac semper nunc lobortis in. 
 Nam mi ligula, rhoncus vel diam a, luctus ultrices felis. 
 Aliquam quis ligula porttitor, pharetra risus nec, dapibus massa.`;
 
-export const GetCollaborationSources = ():ICollaboration[] =>{ return [
+export const GetCaseSources = ():ICaseStudy[] =>{ return [
     {
         title: "Case standalone example",
         route: "/CoolCase",
         description: lipsum,
         pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Symbol_thumbs_up.svg/765px-Symbol_thumbs_up.svg.png",
+        featuredFlag: true,
         page: <CaseStandaloneExample/>
     },
     {
@@ -27,6 +29,7 @@ export const GetCollaborationSources = ():ICollaboration[] =>{ return [
         route: "/NotCoolCase",
         description: lipsum,
         pictureUrl: "https://upload.wikimedia.org/wikipedia/commons/8/84/Symbol_thumbs_down.svg",
+        featuredFlag: true,
         page: <CaseExample title="Not so cool case"/>
     },
     {
@@ -48,6 +51,14 @@ export const GetCollaborationSources = ():ICollaboration[] =>{ return [
         route: "/Pictureless2",
         description: lipsum,
         pictureUrl: "",
+        featuredFlag: true,
         page: <CaseExample title="Where Picture 2?" showExampleIFrame={true}/>
+    },
+    {
+        title: "Where Code Structure Awareness",
+        route: "/Clueless",
+        description: lipsum,
+        pictureUrl: "https://manofmany.com/_next/image?url=https%3A%2F%2Fapi.manofmany.com%2Fwp-content%2Fuploads%2F2024%2F01%2FCBS.jpg&w=1200&q=75",
+        page: <CasePractice/>
     }
 ]}

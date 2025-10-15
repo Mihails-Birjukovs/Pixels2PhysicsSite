@@ -1,6 +1,6 @@
 import { Button, ButtonGroup } from "@mui/material";
 import type { JSX } from "react";
-import { AllRoutes } from "../../../configuration/navigation";
+import { allTopLevelRoutes } from "../../../configuration/navigation";
 import { useNavigate } from "react-router";
 
 export const NavigationButtons = ():JSX.Element => {
@@ -8,18 +8,18 @@ export const NavigationButtons = ():JSX.Element => {
 
     return <>
         <ButtonGroup variant="text">
-                {AllRoutes.map(nb => {
+                {allTopLevelRoutes.map(nb => {
                     return <Button 
                         //Very hacky override to not create a lot of work for us with mui themes and stuff.
                         style={{
                             color:"#FFFFFFDE"
                         }}
-                        key={`${nb.Route}_${nb.RouteDescription}`}
+                        key={`${nb.route}_${nb.routeDescription}`}
                         onClick={() =>{
-                            navigate(nb.Route);
+                            navigate(nb.route);
                         }}
                     >
-                        {nb.RouteDescription}    
+                        {nb.routeDescription}    
                     </Button>
                 })}
             </ButtonGroup>

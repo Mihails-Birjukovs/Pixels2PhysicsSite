@@ -2,26 +2,27 @@ import { Box, Card, CardActionArea, CardContent, Typography } from "@mui/materia
 import type { JSX } from "react";
 import styles from "./styles/CaseStudiesCard.module.scss"
 import { useNavigate } from "react-router";
-import { ConstructFullCaseRoute } from "./caseUtils";
+import { constructFullCaseRoute } from "./caseUtils";
 
-export interface ICollaboration {
+export interface ICaseStudy {
     title:string;
     route:string;
     page?:JSX.Element;
     pictureUrl?:string;
     description?:string;
+    featuredFlag?:boolean;
 }
 
-export interface ICollaborationCardProps extends ICollaboration {}
+export interface ICaseCardProps extends ICaseStudy {}
 
-export const CaseStudiesCard = (props:ICollaborationCardProps):JSX.Element => {
+export const CaseStudiesCard = (props:ICaseCardProps):JSX.Element => {
     const navigate = useNavigate();
 
     return <>
         <Card aria-label="Link to study">
             <CardActionArea
                 onClick={() => {
-                    navigate(ConstructFullCaseRoute(props.route));
+                    navigate(constructFullCaseRoute(props.route));
                 }}
             >
                 <CardContent>

@@ -1,16 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollection";
-import type { ICollaboration } from "../CaseStudies/CaseStudiesCard";
-import { GetCollaborationSources } from "../CaseStudies/dataSource/caseStudySource";
+import type { ICaseStudy } from "../CaseStudies/CaseStudiesCard";
+import { GetCaseSources } from "../CaseStudies/dataSource/caseStudySource";
 import styles from "./Home.module.scss";
 
 export const Home = ():JSX.Element => {
-     const [studies, setStudies] = useState<ICollaboration[]>([]) 
-        useEffect(() => {
-            //Filter the studies here, or change the procurement.
-            setStudies(GetCollaborationSources());
-        }, []);
+     const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
+    useEffect(() => {
+        //Filter the studies here, or change the procurement.
+        const allStudies = GetCaseSources();
+        const featuredStudies = allStudies.filter(as => as.featuredFlag);
+        setFeaturedStudies(featuredStudies);
+    }, []);
 
     return <>
         <Box>
@@ -18,13 +20,13 @@ export const Home = ():JSX.Element => {
             <p>
                 Here you can find answers to your image processing problems!
             </p>
-                <Typography variant="h6">Featured studies</Typography>
+            {featuredStudies.length > 0 && (<><Typography variant="h6">Featured studies</Typography>
             <Box className={styles.caseWrapper}>
                 <CaseStudiesCardCollection
-                    cards={studies}
+                    cards={featuredStudies}
                     cardLimit={3}
                 />
-            </Box>
+            </Box></>)}
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec dui pellentesque, fermentum ex vitae, placerat lectus. 
                 Maecenas varius mi sit amet felis cursus rhoncus. Pellentesque vitae arcu est. Vestibulum dui tellus, consectetur in vestibulum efficitur, euismod a dolor. 
