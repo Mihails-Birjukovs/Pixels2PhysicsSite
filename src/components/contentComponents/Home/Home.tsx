@@ -39,7 +39,7 @@ export const Home = ():JSX.Element => {
                 Donec varius dignissim augue, eu lacinia nulla porttitor vel. Nam sit amet mauris molestie, suscipit est ac, semper eros. 
                 Aenean accumsan, nulla ac molestie ultricies, ante elit ullamcorper tellus, at sagittis metus turpis laoreet risus.
                 Suspendisse ut dui ultricies, malesuada elit ac, dictum turpis. Aliquam sit amet ornare justo. 
-                Phasellus pretium sapien justo, et facilisis risus imperdiet in. Curabitur a porta diam. Sed nec arcu elit. Aenean in imperdiet dolor.
+                Phasellus pretium sapien justo, et facilisis risus imperdiet in. Curabitur a porta diam. Sed nec arcu elit. Aenean in imperdiet dolor...
             </p>
         </Box>
     </>
