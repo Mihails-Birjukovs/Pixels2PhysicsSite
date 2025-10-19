@@ -14,12 +14,12 @@ export const NavigationButtons = ():JSX.Element => {
                         style={{
                             color:"#FFFFFFDE"
                         }}
-                        key={`${nb.route}_${nb.routeDescription}`}
+                        key={`${nb.route}_${nb.title}`}
                         onClick={() =>{
                             navigate(nb.route);
                         }}
                     >
-                        {nb.routeDescription}    
+                        {nb.title}    
                     </Button>
                 })}
             </ButtonGroup>

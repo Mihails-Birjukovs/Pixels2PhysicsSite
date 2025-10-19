@@ -3,15 +3,8 @@ import type { JSX } from "react";
 import styles from "./styles/CaseStudiesCard.module.scss"
 import { useNavigate } from "react-router";
 import { constructFullCaseRoute } from "./caseUtils";
+import type { ICaseStudy } from "./models/ICaseStudyData";
 
-export interface ICaseStudy {
-    title:string;
-    route:string;
-    page?:JSX.Element;
-    pictureUrl?:string;
-    description?:string;
-    featuredFlag?:boolean;
-}
 
 export interface ICaseCardProps extends ICaseStudy {}
 

@@ -5,7 +5,7 @@ import { SiteBody } from './components/structuralComponents/Body/SiteBody';
 import { SiteFooter } from './components/structuralComponents/Footer/SiteFooter';
 import { HashRouter } from 'react-router';
 
-const swapBaseline = window.location.pathname.toLocaleLowerCase().indexOf("/physics2pixelssite") > -1;
+const swapBaseline = window.location.pathname.toLocaleLowerCase().indexOf("/pixels2physicssite") > -1;
 
 function App() {
   useEffect(() => {}, []);

@@ -1,6 +1,7 @@
 import type { JSX } from "react";
-import { CaseStudiesCard, type ICaseStudy } from "./CaseStudiesCard";
+import { CaseStudiesCard } from "./CaseStudiesCard";
 import { Grid } from "@mui/material";
+import type { ICaseStudy } from "./models/ICaseStudyData";
 
 export interface ICollaborationCardCollectionProps {
     cards:ICaseStudy[];
