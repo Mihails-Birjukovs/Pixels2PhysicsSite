@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 
-export const Blog = ():JSX.Element => {
+export const MinimalBlog = ():JSX.Element => {
     return <>
         Blog.
     </>

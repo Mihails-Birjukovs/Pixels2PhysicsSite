@@ -1,14 +1,11 @@
-import { useEffect, useState, type JSX } from "react";
-import { GetCaseSources } from "./dataSource/caseStudySource";
-import type { ICaseStudy } from "./CaseStudiesCard";
+import { useState, type JSX } from "react";
+import { getCaseSources } from "./dataSource/caseStudySource";
 import { CaseStudiesCardCollection } from "./CaseStudiesCardCollection";
 import { Box } from "@mui/material";
+import type { ICaseStudy } from "./models/ICaseStudyData";
 
 export const CaseStudies = ():JSX.Element => {
-    const [studies, setStudies] = useState<ICaseStudy[]>([]) 
-    useEffect(() => {
-        setStudies(GetCaseSources());
-    }, []);
+    const [studies] = useState<ICaseStudy[]>(getCaseSources()) 
 
     return <>
         <Box>

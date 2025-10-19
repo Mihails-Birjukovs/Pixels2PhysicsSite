@@ -2,14 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollection";
 import type { ICaseStudy } from "../CaseStudies/CaseStudiesCard";
-import { GetCaseSources } from "../CaseStudies/dataSource/caseStudySource";
+import { getCaseSources } from "../CaseStudies/dataSource/caseStudySource";
 import styles from "./Home.module.scss";
 
 export const Home = ():JSX.Element => {
      const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
     useEffect(() => {
         //Filter the studies here, or change the procurement.
-        const allStudies = GetCaseSources();
+        const allStudies = getCaseSources();
         const featuredStudies = allStudies.filter(as => as.featuredFlag);
         setFeaturedStudies(featuredStudies);
     }, []);

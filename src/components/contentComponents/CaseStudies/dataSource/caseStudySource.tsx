@@ -1,14 +1,14 @@
 import { CaseStandaloneExample } from "../Cases/CaseStandaloneExample";
 import { CaseExample } from "../Cases/CaseExamples";
-import type { ICaseStudy } from "../CaseStudiesCard";
 import { CasePractice } from "../Cases/CasePractice";
+import type { ICaseStudy } from "../models/ICaseStudyData";
 
 const lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nec nunc vel pulvinar. 
 Vestibulum consectetur aliquet velit, ac semper nunc lobortis in. 
 Nam mi ligula, rhoncus vel diam a, luctus ultrices felis. 
 Aliquam quis ligula porttitor, pharetra risus nec, dapibus massa.`;
 
-export const GetCaseSources = ():ICaseStudy[] =>{ return [
+export const getCaseSources = ():ICaseStudy[] =>{ return [
     {
         title: "Case standalone example",
         route: "/CoolCase",

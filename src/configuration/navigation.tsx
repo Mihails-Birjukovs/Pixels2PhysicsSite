@@ -1,63 +1,67 @@
-import type { JSX } from "react";
 import { Home } from "../components/contentComponents/Home/Home";
 import { About } from "../components/contentComponents/About/About";
 import { CaseStudies } from "../components/contentComponents/CaseStudies/CaseStudies";
 import { Publications } from "../components/contentComponents/Publications/Publications";
 import { Collaborations } from "../components/contentComponents/Collaborations/Collaborations";
-import { Blog } from "../components/contentComponents/Blog/Blog";
+import { Blogs } from "../components/contentComponents/Blog/Blogs";
 import { Contacts } from "../components/contentComponents/Contacts/Contacts";
 import { Services } from "../components/contentComponents/Services/Services";
+import type { IRoutable } from "../models/IRoutable";
+import { Route } from "react-router";
+import { getBlogSources } from "../components/contentComponents/Blog/dataSource/blogDataSource";
+import type { IBlogData } from "../components/contentComponents/Blog/models/IBlogData";
+import { constructFullBlogRoute } from "../components/contentComponents/Blog/blogUtils";
 
-export interface IRouteConfig{
-    routeDescription:string;
-    route:string;
-    page?:JSX.Element;
-}
+const blogs:IBlogData[] = getBlogSources();
+
+export interface IRouteConfig extends IRoutable {}
 
 export const homeRoute:IRouteConfig = {
-    routeDescription: "Home",
+    title: "Home",
     route: "/Home",
     page: <Home/>
 };
 
 export const aboutRoute:IRouteConfig = {
-    routeDescription: "About",
+    title: "About",
     route: "/About",
     page: <About/>
 };
 
 export const caseStudiesRoute:IRouteConfig = {
-    routeDescription: "Case Studies",
+    title: "Case Studies",
     route: "/CaseStudies",
     page: <CaseStudies/>
 };
 
 export const publicationsRoute:IRouteConfig = {
-    routeDescription: "Publications",
+    title: "Publications",
     route: "/Publications",
     page: <Publications/>
 };
 
 export const collaborationsRoute:IRouteConfig = {
-    routeDescription: "Collaborations",
+    title: "Collaborations",
     route: "/Collaborations",
     page: <Collaborations/>
 };
 
 export const blogRoute:IRouteConfig = {
-    routeDescription: "Blog",
+    title: "Blog",
     route: "/Blog",
-    page: <Blog/>
-}
+    page: <Blogs/>,
+};
+//Can't put it inside, due to accessing it's properties before initialization.
+blogRoute.childRoutes = blogs.map(blog => <Route path={constructFullBlogRoute(blog.route)} element={blog.page}/>);
 
 export const contactsRoute:IRouteConfig = {
-    routeDescription: "Contacts",
+    title: "Contacts",
     route: "/Contacts",
     page: <Contacts/>
 }
 
 export const servicesRoute:IRouteConfig = {
-    routeDescription: "Services",
+    title: "Services",
     route: "/Services",
     page: <Services/>
 }
