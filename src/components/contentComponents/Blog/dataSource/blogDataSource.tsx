@@ -27,4 +27,4 @@ export const getBlogSources = ():IBlogData[] =>{ return [
         publishDate: new Date(2025, 10),
         page: <ExampleBlog title="Test blog IV"/>
     }
-].sort((a,b) => (a?.publishDate?.getMilliseconds() ?? 0) - (b?.publishDate?.getMilliseconds() ?? 0))}
+].sort((a,b) => (b?.publishDate?.getTime() ?? 0) - (a?.publishDate?.getTime() ?? 0))}

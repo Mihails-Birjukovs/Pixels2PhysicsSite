@@ -3,7 +3,7 @@ import { About } from "../components/contentComponents/About/About";
 import { CaseStudies } from "../components/contentComponents/CaseStudies/CaseStudies";
 import { Publications } from "../components/contentComponents/Publications/Publications";
 import { Collaborations } from "../components/contentComponents/Collaborations/Collaborations";
-import { Blog } from "../components/contentComponents/Blog/Blog";
+import { Blogs } from "../components/contentComponents/Blog/Blogs";
 import { Contacts } from "../components/contentComponents/Contacts/Contacts";
 import { Services } from "../components/contentComponents/Services/Services";
 import type { IRoutable } from "../models/IRoutable";
@@ -49,7 +49,7 @@ export const collaborationsRoute:IRouteConfig = {
 export const blogRoute:IRouteConfig = {
     title: "Blog",
     route: "/Blog",
-    page: <Blog/>,
+    page: <Blogs/>,
 };
 //Can't put it inside, due to accessing it's properties before initialization.
 blogRoute.childRoutes = blogs.map(blog => <Route path={constructFullBlogRoute(blog.route)} element={blog.page}/>);
