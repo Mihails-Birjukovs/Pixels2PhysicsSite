@@ -1,9 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollection";
-import type { ICaseStudy } from "../CaseStudies/CaseStudiesCard";
 import { getCaseSources } from "../CaseStudies/dataSource/caseStudySource";
 import styles from "./Home.module.scss";
+import type { ICaseStudy } from "../CaseStudies/models/ICaseStudyData";
 
 export const Home = ():JSX.Element => {
      const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
