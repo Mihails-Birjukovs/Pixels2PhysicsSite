@@ -13,19 +13,33 @@ function App() {
   useEffect(() => {}, []);
   const theme = createTheme({
     cssVariables:true,
-    palette:{
-      primary: {
-        main: "#FFFFFF",
-        contrastText: "#000000DE"
+    colorSchemes:{
+      light: {
+        palette:{
+          primary: {
+            main: "#FFFFFF",
+            contrastText: "#000000DE"
+          },
+          secondary: {
+            main: "#1B5FB4",
+            contrastText: "#FFFFFFDE"
+          }
+        }
       },
-      secondary: {
-        main: "#1B5FB4",
-        contrastText: "#FFFFFFDE"
+      dark: {
+        palette:{
+          primary: {
+            main: "#121212",
+            contrastText: "#FAFAFADE"
+          },
+          secondary: {
+            main: "#212121",
+            contrastText: "#FAFAFADE"
+          }
+        }
       }
-    },
-    typography:{
-      allVariants: {}
     }
+    
   });
   return (
     <>
