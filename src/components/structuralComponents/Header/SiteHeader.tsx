@@ -44,7 +44,6 @@ export const SiteHeader = ():JSX.Element => {
         </Box>
     </>}
     {isSmallScreen && <>
-        <Box sx={{ flexGrow: 1 }}>
             <AppBar color="secondary" position="static">
                 <Toolbar>
                     <IconButton
@@ -66,7 +65,6 @@ export const SiteHeader = ():JSX.Element => {
                     <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>{title}</Typography>
                 </Toolbar>
             </AppBar>
-        </Box>
     </>}
     </>
 }

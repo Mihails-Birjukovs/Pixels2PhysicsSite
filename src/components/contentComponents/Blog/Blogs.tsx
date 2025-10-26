@@ -1,5 +1,5 @@
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect, useState, type JSX } from "react";
+import { useEffect, useMemo, useState, type JSX } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { getBlogSources } from "./dataSource/blogDataSource";
 import type { IBlogData } from "./models/IBlogData";
@@ -7,7 +7,6 @@ import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { constructFullBlogRoute } from "./blogUtils";
 import styles from "./Blogs.module.scss";
 import { blogRoute } from "../../../configuration/navigation";
-
 
 export interface IBlogDataGroup {
     blogs:IBlogData[];
@@ -44,15 +43,15 @@ export const Blogs = ():JSX.Element => {
     const [groupedBlogs] = useState<IBlogDataGroup[]>(groupBlogs(blogs));
     const navigate = useNavigate();
     const location = useLocation();
-    const [defaultExpandedItems, setDefaultExpandedItems] = useState([location.pathname]);
-
+    const [defaultExpandedItems] = useState(() => {
+        if(!isSmallScreen) return [location.pathname];
+        if(isSmallScreen && location.pathname.endsWith(blogRoute.route)) return [...blogs.map(b => constructFullBlogRoute(b.route))];
+        return [];
+    });
 
     useEffect(() => {
         if(location.pathname.endsWith(blogRoute.route)){
-            if(isSmallScreen){
-                setDefaultExpandedItems(blogs.map(b => b.route));
-            }
-            else{
+            if(!isSmallScreen){
                 navigate(constructFullBlogRoute(blogs[0].route));
             }
         }
@@ -76,19 +75,30 @@ export const Blogs = ():JSX.Element => {
     }
 
     return <>
-        <Grid 
+        {!isSmallScreen && <Grid 
             container
             spacing={3}
             alignItems="center"
             justifyContent="center"
         >
-            <Grid size={{xs:12, sm:12, md:3, lg:2, xl:2}} className={styles.blogNavigation}>
+            {<>
+                <Grid size={{xs:12, sm:12, md:3, lg:2, xl:2}} className={styles.blogNavigation}>
+                    {creteTreeView()}
+                </Grid>
+                <Grid size={{xs:12, sm:12, md:"grow", lg:"grow", xl:"grow"}}>
+                    <Outlet/>
+                </Grid>
+            </> }
+            
+        </Grid>}
+       {isSmallScreen && <>
+            {location.pathname.endsWith(blogRoute.route) ? 
+            <>
                 {creteTreeView()}
-            </Grid>
-            {!isSmallScreen && <Grid size={{xs:12, sm:12, md:"grow", lg:"grow", xl:"grow"}}>
-                <Outlet/>
-            </Grid>}
-            {isSmallScreen && !location.pathname.endsWith(blogRoute.route) && <Outlet/>}
-        </Grid>
+            </> 
+            : 
+            <Outlet/>
+            }
+        </>}
     </>
 }
