@@ -19,20 +19,20 @@ export const SiteHeader = ():JSX.Element => {
     return <>
     {!isSmallScreen && <>
         <Box 
-            bgcolor="primary.main"
+            bgcolor="secondary.main"
             className={styles.header}
         >
             <Box>
                 <Typography 
                     variant="h2"
-                    color="primary.contrastText"
+                    color="secondary.contrastText"
                     >
                     {title}
                 </Typography>
             </Box>
             <Box>
                 <Typography 
-                    color="primary.contrastText"
+                    color="secondary.contrastText"
                     variant="subtitle2"
                     >
                     {subTitle}
@@ -45,13 +45,13 @@ export const SiteHeader = ():JSX.Element => {
     </>}
     {isSmallScreen && <>
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar color="secondary" position="static">
                 <Toolbar>
                     <IconButton
                         size="large"
                         edge="start"
                         style={{
-                            color:theme.palette.primary.contrastText
+                            color:theme.palette.secondary.contrastText
                         }}
                         color="secondary"
                         aria-label="menu"

@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { getBlogSources } from "./dataSource/blogDataSource";
@@ -38,16 +38,42 @@ export const groupBlogs = (blogs:IBlogData[]):IBlogDataGroup[] => {
 }
 
 export const Blogs = ():JSX.Element => {
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
     const [blogs] = useState<IBlogData[]>(getBlogSources());
     const [groupedBlogs] = useState<IBlogDataGroup[]>(groupBlogs(blogs));
     const navigate = useNavigate();
     const location = useLocation();
+    const [defaultExpandedItems, setDefaultExpandedItems] = useState([location.pathname]);
+
 
     useEffect(() => {
         if(location.pathname.endsWith(blogRoute.route)){
-            navigate(constructFullBlogRoute(blogs[0].route));
+            if(isSmallScreen){
+                setDefaultExpandedItems(blogs.map(b => b.route));
+            }
+            else{
+                navigate(constructFullBlogRoute(blogs[0].route));
+            }
         }
     }, []);
+
+    const creteTreeView = ():JSX.Element => {
+        return <SimpleTreeView 
+                defaultSelectedItems={location.pathname}
+                defaultExpandedItems={defaultExpandedItems}
+            >
+            {groupedBlogs.map(blogGroup => {
+                return <TreeItem key={blogGroup.year} itemId={blogGroup.year} label={blogGroup.year}>
+                    {blogGroup.blogs.map(blog => {
+                        return <TreeItem key={blog.route} itemId={constructFullBlogRoute(blog.route)} label={blog.title} onClick={() => {
+                            navigate(constructFullBlogRoute(blog.route));
+                        }}/>
+                    })}
+                </TreeItem>
+            })}
+        </SimpleTreeView>
+    }
 
     return <>
         <Grid 
@@ -56,22 +82,13 @@ export const Blogs = ():JSX.Element => {
             alignItems="center"
             justifyContent="center"
         >
-           <Grid size={{xs:0, sm:0, md:3, lg:2, xl:2}} className={styles.blogNavigation}>
-                <SimpleTreeView defaultSelectedItems={location.pathname}>
-                    {groupedBlogs.map(blogGroup => {
-                        return <TreeItem key={blogGroup.year} itemId={blogGroup.year} label={blogGroup.year}>
-                            {blogGroup.blogs.map(blog => {
-                                return <TreeItem key={blog.route} itemId={constructFullBlogRoute(blog.route)} label={blog.title} onClick={() => {
-                                    navigate(constructFullBlogRoute(blog.route));
-                                }}/>
-                            })}
-                        </TreeItem>
-                    })}
-                </SimpleTreeView>
+            <Grid size={{xs:12, sm:12, md:3, lg:2, xl:2}} className={styles.blogNavigation}>
+                {creteTreeView()}
             </Grid>
-            <Grid size={{xs:12, sm:12, md:"grow", lg:"grow", xl:"grow"}}>
+            {!isSmallScreen && <Grid size={{xs:12, sm:12, md:"grow", lg:"grow", xl:"grow"}}>
                 <Outlet/>
-            </Grid>
+            </Grid>}
+            {isSmallScreen && !location.pathname.endsWith(blogRoute.route) && <Outlet/>}
         </Grid>
     </>
 }

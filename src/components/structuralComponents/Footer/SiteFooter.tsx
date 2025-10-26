@@ -10,7 +10,7 @@ export const SiteFooter = ():JSX.Element => {
 
     return <>
         <Box 
-            bgcolor="primary.main"
+            bgcolor="secondary.main"
             className={styles.footer}>
             <Box>
                 {!isSmallScreen &&<Box>
@@ -19,15 +19,15 @@ export const SiteFooter = ():JSX.Element => {
                 <Box>
                     <Typography 
                         variant="body1" 
-                        color="primary.contrastText"
+                        color="secondary.contrastText"
                         style={{
                             textAlign: "center"
                         }}>© 2025 Pixels2Physics — Mihails Birjukovs</Typography>
                 </Box>
                 <Box>
-                    <Box component="span"><Link color="primary.contrastText" href="https://github.com/Mihails-Birjukovs" target="_blank" rel="noreferrer">GitHub</Link></Box>
-                    <Box color="primary.contrastText" component="span">&nbsp;•&nbsp;</Box>
-                    <Box component="span"><Link color="primary.contrastText" href="https://www.researchgate.net/profile/Mihails-Birjukovs" target="_blank" rel="noreferrer">ResearchGate</Link></Box>
+                    <Box component="span"><Link color="secondary.contrastText" href="https://github.com/Mihails-Birjukovs" target="_blank" rel="noreferrer">GitHub</Link></Box>
+                    <Box color="secondary.contrastText" component="span">&nbsp;•&nbsp;</Box>
+                    <Box component="span"><Link color="secondary.contrastText" href="https://www.researchgate.net/profile/Mihails-Birjukovs" target="_blank" rel="noreferrer">ResearchGate</Link></Box>
                 </Box>
             </Box>
         </Box>

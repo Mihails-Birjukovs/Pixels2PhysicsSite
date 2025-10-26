@@ -1,6 +1,6 @@
-import type { JSX } from "react";
+import { Fragment, type JSX } from "react";
 import { allTopLevelRoutes } from "../../../configuration/navigation";
-import { Box, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { Box, Divider, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router";
 
 export interface IMobileNavigationButtonsProps {
@@ -16,16 +16,19 @@ export const MobileNavigationButtons = ({open: isOpen, onClose = () => {}}: IMob
             <Box sx={{width:250}}>   
                 <List>
                     {allTopLevelRoutes.map(r => {
-                    return <ListItem key={r.route}>
-                        <ListItemButton 
-                            onClick={() => {
-                                navigate(r.route);
-                                onClose();
-                            }}
-                        >
-                            <ListItemText primary={r.title}/>
-                        </ListItemButton>
-                    </ListItem>
+                    return <Fragment key={r.route}>
+                        <ListItem>
+                            <ListItemButton 
+                                onClick={() => {
+                                    navigate(r.route);
+                                    onClose();
+                                }}
+                            >
+                                <ListItemText primary={r.title}/>
+                            </ListItemButton>
+                        </ListItem>
+                        <Divider/>
+                    </Fragment>
                     })}
                 </List>
             </Box>

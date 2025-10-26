@@ -15,14 +15,16 @@ function App() {
     cssVariables:true,
     palette:{
       primary: {
+        main: "#FFFFFF",
+        contrastText: "#000000DE"
+      },
+      secondary: {
         main: "#1B5FB4",
         contrastText: "#FFFFFFDE"
       }
     },
     typography:{
-      allVariants: {
-        //color : "#FFFFFFDE"
-      }
+      allVariants: {}
     }
   });
   return (

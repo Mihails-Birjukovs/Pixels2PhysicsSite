@@ -12,7 +12,7 @@ export const NavigationButtons = ():JSX.Element => {
                 {allTopLevelRoutes.map(nb => {
                     return <Button 
                         style={{
-                            color: theme.palette.primary.contrastText
+                            color: theme.palette.secondary.contrastText
                         }}
                         key={`${nb.route}_${nb.title}`}
                         onClick={() =>{
