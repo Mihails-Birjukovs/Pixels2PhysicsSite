@@ -2,11 +2,10 @@ import type { JSX } from "react";
 import Box from '@mui/material/Box';
 import styles from "./SiteFooter.module.scss";
 import { NavigationButtons } from "../Navigation/NavigationButtons";
-import { Link, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Link, Typography, useMediaQuery } from "@mui/material";
 
 export const SiteFooter = ():JSX.Element => {
-    const theme = useTheme(); //Rewrite later into global theme?
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down("md"));
 
     return <>
         <Box 

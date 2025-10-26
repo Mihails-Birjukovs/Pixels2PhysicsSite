@@ -52,7 +52,6 @@ export const SiteHeader = ():JSX.Element => {
                         style={{
                             color:theme.palette.secondary.contrastText
                         }}
-                        color="secondary"
                         aria-label="menu"
                         sx={{ mr: 2 }}
                         onClick={() => {

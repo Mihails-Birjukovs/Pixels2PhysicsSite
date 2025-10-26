@@ -1,4 +1,4 @@
-import { Grid, useMediaQuery, useTheme } from "@mui/material";
+import { Grid, useMediaQuery } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { getBlogSources } from "./dataSource/blogDataSource";
@@ -37,8 +37,7 @@ export const groupBlogs = (blogs:IBlogData[]):IBlogDataGroup[] => {
 }
 
 export const Blogs = ():JSX.Element => {
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
+    const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down("md"));
     const [blogs] = useState<IBlogData[]>(getBlogSources());
     const [groupedBlogs] = useState<IBlogDataGroup[]>(groupBlogs(blogs));
     const navigate = useNavigate();
