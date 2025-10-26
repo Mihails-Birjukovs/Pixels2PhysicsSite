@@ -1,18 +1,18 @@
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, useTheme } from "@mui/material";
 import type { JSX } from "react";
 import { allTopLevelRoutes } from "../../../configuration/navigation";
 import { useNavigate } from "react-router";
 
 export const NavigationButtons = ():JSX.Element => {
     const navigate = useNavigate();
+    const theme = useTheme();
 
     return <>
         <ButtonGroup variant="text">
                 {allTopLevelRoutes.map(nb => {
                     return <Button 
-                        //Very hacky override to not create a lot of work for us with mui themes and stuff.
                         style={{
-                            color:"#FFFFFFDE"
+                            color: theme.palette.primary.contrastText
                         }}
                         key={`${nb.route}_${nb.title}`}
                         onClick={() =>{
