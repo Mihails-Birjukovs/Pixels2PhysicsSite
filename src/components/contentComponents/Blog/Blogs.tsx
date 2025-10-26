@@ -1,5 +1,5 @@
 import { Grid, useMediaQuery, useTheme } from "@mui/material";
-import { useEffect, useMemo, useState, type JSX } from "react";
+import { useEffect, useState, type JSX } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { getBlogSources } from "./dataSource/blogDataSource";
 import type { IBlogData } from "./models/IBlogData";
