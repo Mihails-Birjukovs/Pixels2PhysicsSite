@@ -1,11 +1,7 @@
-@use "../../../styles/GlobalTheme";
-
 .footer{
     flex: 0 1 100px;
     width: 100%;
     height: 100px;
-    background-color: GlobalTheme.$primaryStructuralBackgroundColor;
-    color: GlobalTheme.$primaryStructuralColor;
     display: flex;
     align-items: center;
     flex-flow: column;
