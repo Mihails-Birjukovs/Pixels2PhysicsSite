@@ -7,6 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { AppBar, IconButton, useTheme, Toolbar } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { MobileNavigationButtons } from "../Navigation/MobileNavigationButtons";
+import { ThemeSwitch } from "../Controls/ThemeSwitch";
 
 const title = "Pixels2Physics";
 const subTitle = "Insert general header description here.";
@@ -29,6 +30,15 @@ export const SiteHeader = ():JSX.Element => {
                     >
                     {title}
                 </Typography>
+                <Box
+                    sx={{
+                        position:"absolute",
+                        right:"0",
+                        top:"10px"
+                    }}
+                >
+                    <ThemeSwitch/>
+                </Box>
             </Box>
             <Box>
                 <Typography 
@@ -47,6 +57,7 @@ export const SiteHeader = ():JSX.Element => {
             <AppBar color="secondary" position="static">
                 <Toolbar>
                     <IconButton
+                        title="Navigation"
                         size="large"
                         edge="start"
                         style={{
@@ -62,6 +73,13 @@ export const SiteHeader = ():JSX.Element => {
                     </IconButton>
                     <MobileNavigationButtons open={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}/>
                     <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>{title}</Typography>
+                    <Box
+                        sx={{
+                            marginRight : "-20px"
+                        }}
+                    >
+                        <ThemeSwitch/>
+                    </Box>
                 </Toolbar>
             </AppBar>
     </>}
