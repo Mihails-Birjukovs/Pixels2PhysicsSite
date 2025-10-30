@@ -1,9 +1,6 @@
 {
-  "name": "react-ts",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "homepage": "https://mihails-birjukovs.github.io/Pixels2PhysicsSite",
+  "name": "pixels-2-physics-site",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -34,5 +31,16 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",
     "vite": "^7.1.7"
+  },
+  "private": true,
+  "description": "A digital business card of Mihails Birjukovs.",
+  "type": "module",
+  "homepage": "https://mihails-birjukovs.github.io/Pixels2PhysicsSite",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/Mihails-Birjukovs/Pixels2PhysicsSite"
+  },
+  "engines": {
+    "node": ">=22.20.0"
   }
 }
