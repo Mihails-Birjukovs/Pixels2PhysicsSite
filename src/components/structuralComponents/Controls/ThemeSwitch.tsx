@@ -1,5 +1,5 @@
 import { Box, FormControlLabel, Switch, useColorScheme, useTheme } from "@mui/material";
-import { useMemo, type JSX } from "react"
+import { type JSX } from "react"
 import LightModeIcon from '@mui/icons-material/LightMode';
 
 const innerLabel = "Light/Dark mode";
@@ -7,9 +7,8 @@ const ariaLabel = { inputProps: { "aria-label": innerLabel }};
 
 export const ThemeSwitch = ():JSX.Element => {
     const { mode, systemMode, setMode } = useColorScheme();
-    const isLightModeInitially = useMemo(() => {
-        return ((mode ?? "system") == "system" ? (systemMode ?? "light") : mode) == "light";
-    }, []);
+    //There is no point in using useMemo here due to very low cost of operation.
+    const isLightModeInitially = ((mode ?? "system") == "system" ? (systemMode ?? "light") : mode) == "light";
     const theme = useTheme();
 
     return <>
