@@ -7,7 +7,7 @@ const ariaLabel = { inputProps: { "aria-label": innerLabel }};
 
 export const ThemeSwitch = ():JSX.Element => {
     const { mode, systemMode, setMode } = useColorScheme();
-    const isLightMode = (mode ?? systemMode) == "light";
+    const isLightMode = ((mode ?? "system") == "system" ? (systemMode ?? "light") : mode) == "light";
     const theme = useTheme();
 
     return <>
