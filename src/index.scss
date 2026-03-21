@@ -8,7 +8,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
+#root {
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+}
 
 body {
   margin: 0;
