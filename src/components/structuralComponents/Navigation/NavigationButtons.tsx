@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, useTheme } from "@mui/material";
+import { Box, Button, ButtonGroup, useTheme } from "@mui/material";
 import type { JSX } from "react";
 import { allTopLevelRoutes } from "../../../configuration/navigation";
 import { useNavigate } from "react-router";
@@ -7,7 +7,9 @@ export const NavigationButtons = ():JSX.Element => {
     const navigate = useNavigate();
     const theme = useTheme();
 
-    return <>
+    return <Box
+        role="navigation"
+    >
         <ButtonGroup variant="text">
                 {allTopLevelRoutes.map(nb => {
                     return <Button 
@@ -23,5 +25,5 @@ export const NavigationButtons = ():JSX.Element => {
                     </Button>
                 })}
             </ButtonGroup>
-    </>
+    </Box>
 }

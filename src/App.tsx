@@ -1,4 +1,3 @@
-import './App.scss'
 import { SiteHeader } from './components/structuralComponents/Header/SiteHeader';
 import { SiteBody } from './components/structuralComponents/Body/SiteBody';
 import { SiteFooter } from './components/structuralComponents/Footer/SiteFooter';

@@ -5,8 +5,8 @@ import { getBlogSources } from "./dataSource/blogDataSource";
 import type { IBlogData } from "./models/IBlogData";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { constructFullBlogRoute } from "./blogUtils";
-import styles from "./Blogs.module.scss";
 import { blogRoute } from "../../../configuration/navigation";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export interface IBlogDataGroup {
     blogs:IBlogData[];
@@ -48,6 +48,8 @@ export const Blogs = ():JSX.Element => {
         return [];
     });
 
+    useTitleHook("Pixels2Physics - Blogs");
+
     useEffect(() => {
         if(location.pathname.endsWith(blogRoute.route)){
             if(!isSmallScreen){
@@ -81,7 +83,12 @@ export const Blogs = ():JSX.Element => {
             justifyContent="center"
         >
             {<>
-                <Grid size={{xs:12, sm:12, md:3, lg:2, xl:2}} className={styles.blogNavigation}>
+                <Grid 
+                    size={{xs:12, sm:12, md:3, lg:2, xl:2}}
+                    sx={{
+                        borderRight:"2px"
+                    }}
+                >
                     {creteTreeView()}
                 </Grid>
                 <Grid size={{xs:12, sm:12, md:"grow", lg:"grow", xl:"grow"}}>

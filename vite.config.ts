@@ -8,5 +8,10 @@ export default defineConfig({
     open:true
   },
   //It is neccessary to set base here, due to github pages disliking leading '/' in scrip and style urls.
-  base: ''
-})
+  base: '',
+  build:{
+    rollupOptions:{
+      treeshake:true
+    }
+  }
+});

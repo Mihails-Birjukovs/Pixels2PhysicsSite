@@ -1,7 +1,10 @@
 import { Box } from "@mui/material";
 import type { JSX } from "react";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export const Services = ():JSX.Element => {
+    useTitleHook("Pixels2Phisics - Services");
+
     return <>
         Services.
         <Box>

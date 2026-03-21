@@ -2,11 +2,12 @@ import { Box, Typography } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollection";
 import { getCaseSources } from "../CaseStudies/dataSource/caseStudySource";
-import styles from "./Home.module.scss";
 import type { ICaseStudy } from "../CaseStudies/models/ICaseStudyData";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export const Home = ():JSX.Element => {
-     const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
+    useTitleHook("Pixels2Phisics - Home");
+    const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
     useEffect(() => {
         //Filter the studies here, or change the procurement.
         const allStudies = getCaseSources();
@@ -16,12 +17,16 @@ export const Home = ():JSX.Element => {
 
     return <>
         <Box>
-            <Typography variant="h4">Welcome, to Pixel2Physics!</Typography>
+            <Typography variant="h4" component="h2">Welcome, to Pixels2Physics!</Typography>
             <p>
                 Here you can find answers to your image processing problems!
             </p>
-            {featuredStudies.length > 0 && (<><Typography variant="h6">Featured studies</Typography>
-            <Box className={styles.caseWrapper}>
+            {featuredStudies.length > 0 && (<><Typography variant="h6" component="h3">Featured studies</Typography>
+            <Box
+                sx={{
+                    padding:"15px 0 15px 0"
+                }}
+            >
                 <CaseStudiesCardCollection
                     cards={featuredStudies}
                     cardLimit={3}

@@ -3,10 +3,10 @@ import { Routes, Route, Navigate } from "react-router";
 import { allTopLevelRoutes, homeRoute} from "../../../configuration/navigation";
 import { Home } from "../../contentComponents/Home/Home";
 import { Box } from "@mui/material";
-import styles from "./SiteBody.module.scss";
 import { getCaseSources } from "../../contentComponents/CaseStudies/dataSource/caseStudySource";
 import { constructFullCaseRoute } from "../../contentComponents/CaseStudies/caseUtils";
 import type { ICaseStudy } from "../../contentComponents/CaseStudies/models/ICaseStudyData";
+import { CaseWrapper } from "../../contentComponents/CaseStudies/CaseWrapper";
 
 
 export const SiteBody = ():JSX.Element => {
@@ -17,7 +17,15 @@ export const SiteBody = ():JSX.Element => {
         setRoutesLoaded(true);
     }, []);
     return <>
-        <Box className={styles.body}>
+        <Box
+            role="main"
+            sx={{
+                flex:"1 1 auto",
+                margin:"20px",
+                marginRight:"40px",
+                marginLeft:"40px"
+            }}
+        >
             <Routes>
                 <Route path="" element={<Home/>}/>
                 {allTopLevelRoutes.map(r => {
@@ -26,7 +34,7 @@ export const SiteBody = ():JSX.Element => {
                     </Route>
                 })}
                 {cases.map(c => {
-                        return <Route path={constructFullCaseRoute(c.route)} element={c.page}/>
+                        return <Route path={constructFullCaseRoute(c.route)} element={<CaseWrapper {...c}/>}/>
                 })}
                 {routesLoaded && <Route path="*" element={<Navigate replace to={homeRoute.route} />}/>}
             </Routes>

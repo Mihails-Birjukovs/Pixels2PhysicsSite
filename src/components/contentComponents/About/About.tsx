@@ -1,7 +1,10 @@
 import { Typography } from "@mui/material";
 import type { JSX } from "react";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export const About = ():JSX.Element => {
+    useTitleHook("Pixels2Phisics - About myself");
+
     return <>
         <Typography variant="h4">About myself:</Typography>
         <img src="https://avatars.githubusercontent.com/u/75037455"></img>

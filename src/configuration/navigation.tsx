@@ -11,6 +11,7 @@ import { Route } from "react-router";
 import { getBlogSources } from "../components/contentComponents/Blog/dataSource/blogDataSource";
 import type { IBlogData } from "../components/contentComponents/Blog/models/IBlogData";
 import { constructFullBlogRoute } from "../components/contentComponents/Blog/blogUtils";
+import { BlogWrapper } from "../components/contentComponents/Blog/BlogWrapper";
 
 const blogs:IBlogData[] = getBlogSources();
 
@@ -52,7 +53,7 @@ export const blogRoute:IRouteConfig = {
     page: <Blogs/>,
 };
 //Can't put it inside, due to accessing it's properties before initialization.
-blogRoute.childRoutes = blogs.map(blog => <Route path={constructFullBlogRoute(blog.route)} element={blog.page}/>);
+blogRoute.childRoutes = blogs.map(blog => <Route path={constructFullBlogRoute(blog.route)} element={<BlogWrapper {...blog}/>}/>);
 
 export const contactsRoute:IRouteConfig = {
     title: "Contacts",

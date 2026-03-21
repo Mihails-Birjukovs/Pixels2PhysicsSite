@@ -1,6 +1,5 @@
 import { Box, Card, CardActionArea, CardContent, Typography } from "@mui/material";
 import type { JSX } from "react";
-import styles from "./styles/CaseStudiesCard.module.scss"
 import { useNavigate } from "react-router";
 import { constructFullCaseRoute } from "./caseUtils";
 import type { ICaseStudy } from "./models/ICaseStudyData";
@@ -19,15 +18,33 @@ export const CaseStudiesCard = (props:ICaseCardProps):JSX.Element => {
                 }}
             >
                 <CardContent>
-                    <Box className={styles.cardPicture}>
+                    <Box 
+                        sx={{
+                            width: "250px",
+                            height: "250px",
+                            margin: "auto",
+                            "& img": {
+                                objectFit:"contain",
+                                height:"100%",
+                                width:"100%"
+                            }
+                        }}
+                    >
                         {props.pictureUrl && <img src={props.pictureUrl}/>}
                     </Box>
                     <Box>
-                        <Typography variant="h4">
+                        {/**TODO - Need to find a solution to multiline titles breaking the cards...*/}
+                        <Typography variant="h5" component="h2">
                             {props.title}
                         </Typography>
                     </Box>
-                    {props.description && <Box className={styles.description}>
+                    {props.description && <Box 
+                        sx={{
+                            maxHeight:"100px",
+                            overflow:"hidden",
+                            wordWrap:"normal"
+                        }}
+                    >
                         <Typography>
                             {props.description}
                         </Typography>
