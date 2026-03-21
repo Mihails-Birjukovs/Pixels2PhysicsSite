@@ -7,6 +7,7 @@ import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { constructFullBlogRoute } from "./blogUtils";
 import styles from "./Blogs.module.scss";
 import { blogRoute } from "../../../configuration/navigation";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export interface IBlogDataGroup {
     blogs:IBlogData[];
@@ -47,6 +48,8 @@ export const Blogs = ():JSX.Element => {
         if(isSmallScreen && location.pathname.endsWith(blogRoute.route)) return [...blogs.map(b => constructFullBlogRoute(b.route))];
         return [];
     });
+
+    useTitleHook("Pixels2Physics - Blogs");
 
     useEffect(() => {
         if(location.pathname.endsWith(blogRoute.route)){

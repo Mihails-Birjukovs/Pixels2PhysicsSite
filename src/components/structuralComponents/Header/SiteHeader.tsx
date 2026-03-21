@@ -26,6 +26,7 @@ export const SiteHeader = ():JSX.Element => {
             <Box>
                 <Typography 
                     variant="h2"
+                    component="h1"
                     color="secondary.contrastText"
                     >
                     {title}
@@ -44,7 +45,7 @@ export const SiteHeader = ():JSX.Element => {
                 <Typography 
                     color="secondary.contrastText"
                     variant="subtitle2"
-                    >
+                >
                     {subTitle}
                 </Typography>
             </Box>

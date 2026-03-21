@@ -4,9 +4,11 @@ import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollect
 import { getCaseSources } from "../CaseStudies/dataSource/caseStudySource";
 import styles from "./Home.module.scss";
 import type { ICaseStudy } from "../CaseStudies/models/ICaseStudyData";
+import { useTitleHook } from "../../../hooks/useTitleHook";
 
 export const Home = ():JSX.Element => {
-     const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
+    useTitleHook("Pixels2Phisics - Home");
+    const [featuredStudies, setFeaturedStudies] = useState<ICaseStudy[]>([]) ;
     useEffect(() => {
         //Filter the studies here, or change the procurement.
         const allStudies = getCaseSources();

@@ -7,6 +7,7 @@ import styles from "./SiteBody.module.scss";
 import { getCaseSources } from "../../contentComponents/CaseStudies/dataSource/caseStudySource";
 import { constructFullCaseRoute } from "../../contentComponents/CaseStudies/caseUtils";
 import type { ICaseStudy } from "../../contentComponents/CaseStudies/models/ICaseStudyData";
+import { CaseWrapper } from "../../contentComponents/CaseStudies/CaseWrapper";
 
 
 export const SiteBody = ():JSX.Element => {
@@ -26,7 +27,7 @@ export const SiteBody = ():JSX.Element => {
                     </Route>
                 })}
                 {cases.map(c => {
-                        return <Route path={constructFullCaseRoute(c.route)} element={c.page}/>
+                        return <Route path={constructFullCaseRoute(c.route)} element={<CaseWrapper {...c}/>}/>
                 })}
                 {routesLoaded && <Route path="*" element={<Navigate replace to={homeRoute.route} />}/>}
             </Routes>
