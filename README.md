@@ -1,4 +1,4 @@
-# Visit card site for Pixel2Physics project.
+# Visit card site for Pixels2Physics project.
 
 The current site can be found [here](https://mihails-birjukovs.github.io/Pixels2PhysicsSite).
 

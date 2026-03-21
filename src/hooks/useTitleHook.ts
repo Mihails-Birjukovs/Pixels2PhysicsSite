@@ -5,7 +5,7 @@ import { useEffect, useMemo } from "react"
  * @param title - Value of the title to be set.
  */
 export const useTitleHook = (title:string) => {
-    //If there is more than 1 title element, the HTML is malformed.
+    //If there is more than 1 title element, the HTML is malformed, we do not need to consider that case here.
     const titleElement = useMemo(() => document.getElementsByTagName("title")[0], []);
     useEffect(() => {
         titleElement.innerHTML = title;
