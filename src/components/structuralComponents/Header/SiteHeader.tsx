@@ -1,6 +1,5 @@
 import { useState, type JSX } from "react";
 import Box from '@mui/material/Box';
-import styles from "./SiteHeader.module.scss";
 import Typography from "@mui/material/Typography";
 import { NavigationButtons } from "../Navigation/NavigationButtons";
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -18,71 +17,75 @@ export const SiteHeader = ():JSX.Element => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return <>
-    {!isSmallScreen && <>
-        <Box 
-            bgcolor="secondary.main"
-            className={styles.header}
-        >
-            <Box>
-                <Typography 
-                    variant="h2"
-                    component="h1"
-                    color="secondary.contrastText"
-                    >
-                    {title}
-                </Typography>
-                <Box
-                    sx={{
-                        position:"absolute",
-                        right:"0",
-                        top:"10px"
-                    }}
-                >
-                    <ThemeSwitch/>
-                </Box>
-            </Box>
-            <Box>
-                <Typography 
-                    color="secondary.contrastText"
-                    variant="subtitle2"
-                >
-                    {subTitle}
-                </Typography>
-            </Box>
-            <Box>
-                <NavigationButtons/>
-            </Box>
-        </Box>
-    </>}
-    {isSmallScreen && <>
-            <AppBar color="secondary" position="static">
-                <Toolbar>
-                    <IconButton
-                        title="Navigation"
-                        size="large"
-                        edge="start"
-                        style={{
-                            color:theme.palette.secondary.contrastText
-                        }}
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                        onClick={() => {
-                            setIsMobileMenuOpen(true);
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <MobileNavigationButtons open={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}/>
-                    <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>{title}</Typography>
+        {!isSmallScreen && <>
+            <Box 
+                bgcolor="secondary.main"
+                sx={{
+                    width:"100%",
+                    flex:"0 1 auto",
+                    minHeight:"135px"                
+                }}
+            >
+                <Box>
+                    <Typography 
+                        variant="h2"
+                        component="h1"
+                        color="secondary.contrastText"
+                        >
+                        {title}
+                    </Typography>
                     <Box
                         sx={{
-                            marginRight : "-20px"
+                            position:"absolute",
+                            right:"0",
+                            top:"10px"
                         }}
                     >
                         <ThemeSwitch/>
                     </Box>
-                </Toolbar>
-            </AppBar>
-    </>}
+                </Box>
+                <Box>
+                    <Typography 
+                        color="secondary.contrastText"
+                        variant="subtitle2"
+                    >
+                        {subTitle}
+                    </Typography>
+                </Box>
+                <Box>
+                    <NavigationButtons/>
+                </Box>
+            </Box>
+        </>}
+        {isSmallScreen && <>
+                <AppBar color="secondary" position="static">
+                    <Toolbar>
+                        <IconButton
+                            title="Navigation"
+                            size="large"
+                            edge="start"
+                            style={{
+                                color:theme.palette.secondary.contrastText
+                            }}
+                            aria-label="menu"
+                            sx={{ mr: 2 }}
+                            onClick={() => {
+                                setIsMobileMenuOpen(true);
+                            }}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                        <MobileNavigationButtons open={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)}/>
+                        <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>{title}</Typography>
+                        <Box
+                            sx={{
+                                marginRight : "-20px"
+                            }}
+                        >
+                            <ThemeSwitch/>
+                        </Box>
+                    </Toolbar>
+                </AppBar>
+        </>}
     </>
 }

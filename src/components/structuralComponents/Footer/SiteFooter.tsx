@@ -1,6 +1,5 @@
 import type { JSX } from "react";
 import Box from '@mui/material/Box';
-import styles from "./SiteFooter.module.scss";
 import { NavigationButtons } from "../Navigation/NavigationButtons";
 import { Link, Typography, useMediaQuery } from "@mui/material";
 
@@ -9,8 +8,16 @@ export const SiteFooter = ():JSX.Element => {
 
     return <>
         <Box 
-            bgcolor="secondary.main"
-            className={styles.footer}>
+            sx={{
+                bgcolor:"secondary.main",
+                flex:"0 1 100px",
+                width:"100%",
+                height:"100px",
+                display:"flex",
+                alignItems:"center",
+                flexFlow:"column"  
+            }}
+        >
             <Box>
                 {!isSmallScreen &&<Box>
                     <NavigationButtons/>

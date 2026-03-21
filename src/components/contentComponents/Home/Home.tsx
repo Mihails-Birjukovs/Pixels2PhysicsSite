@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 import { useEffect, useState, type JSX } from "react";
 import { CaseStudiesCardCollection } from "../CaseStudies/CaseStudiesCardCollection";
 import { getCaseSources } from "../CaseStudies/dataSource/caseStudySource";
-import styles from "./Home.module.scss";
 import type { ICaseStudy } from "../CaseStudies/models/ICaseStudyData";
 import { useTitleHook } from "../../../hooks/useTitleHook";
 
@@ -23,7 +22,11 @@ export const Home = ():JSX.Element => {
                 Here you can find answers to your image processing problems!
             </p>
             {featuredStudies.length > 0 && (<><Typography variant="h6">Featured studies</Typography>
-            <Box className={styles.caseWrapper}>
+            <Box
+                sx={{
+                    padding:"15px 0 15px 0"
+                }}
+            >
                 <CaseStudiesCardCollection
                     cards={featuredStudies}
                     cardLimit={3}
