@@ -13,7 +13,10 @@ export const MobileNavigationButtons = ({open: isOpen, onClose = () => {}}: IMob
 
     return <>
         <Drawer open={isOpen} onClose={onClose}>
-            <Box sx={{width:250}}>   
+            <Box 
+                sx={{width:250}}
+                role="navigation"
+            >   
                 <List>
                     {allTopLevelRoutes.map(r => {
                     return <Fragment key={r.route}>

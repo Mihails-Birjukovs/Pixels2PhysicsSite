@@ -19,12 +19,13 @@ export const SiteHeader = ():JSX.Element => {
     return <>
         {!isSmallScreen && <>
             <Box 
-                bgcolor="secondary.main"
                 sx={{
-                    width:"100%",
-                    flex:"0 1 auto",
-                    minHeight:"135px"                
+                    width: "100%",
+                    flex: "0 1 auto",
+                    minHeight: "135px",
+                    bgcolor: "secondary.main"             
                 }}
+                role="banner"
             >
                 <Box>
                     <Typography 
@@ -58,7 +59,11 @@ export const SiteHeader = ():JSX.Element => {
             </Box>
         </>}
         {isSmallScreen && <>
-                <AppBar color="secondary" position="static">
+                <AppBar 
+                    color="secondary" 
+                    position="static"
+                    role="banner"
+                >
                     <Toolbar>
                         <IconButton
                             title="Navigation"

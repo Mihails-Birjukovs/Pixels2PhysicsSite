@@ -17,6 +17,7 @@ export const SiteFooter = ():JSX.Element => {
                 alignItems:"center",
                 flexFlow:"column"  
             }}
+            role="contentinfo"
         >
             <Box>
                 {!isSmallScreen &&<Box>

@@ -18,6 +18,7 @@ export const SiteBody = ():JSX.Element => {
     }, []);
     return <>
         <Box
+            role="main"
             sx={{
                 flex:"1 1 auto",
                 margin:"20px",
