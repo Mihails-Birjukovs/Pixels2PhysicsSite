@@ -39,7 +39,7 @@ const theme = createTheme({
   }
 });
 
-function App() {
+export const App = () => {
   return (
     <>
       <InitColorSchemeScript 
@@ -66,5 +66,3 @@ function App() {
     </>
   )
 }
-
-export default App
