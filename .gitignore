@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vitest/playwright artifacts.
+__screenshots__/
+.vitest-attachments/
