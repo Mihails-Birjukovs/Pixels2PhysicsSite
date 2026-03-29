@@ -2,6 +2,7 @@ import { CaseStandaloneExample } from "../Cases/CaseStandaloneExample";
 import { CaseExample } from "../Cases/CaseExamples";
 import { CasePractice } from "../Cases/CasePractice";
 import type { ICaseStudy } from "../models/ICaseStudyData";
+import { CaseWrapper } from "../CaseWrapper";
 
 const lipsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere nec nunc vel pulvinar. 
 Vestibulum consectetur aliquet velit, ac semper nunc lobortis in. 
@@ -61,4 +62,7 @@ export const getCaseSources = ():ICaseStudy[] =>{ return [
         pictureUrl: "https://manofmany.com/_next/image?url=https%3A%2F%2Fapi.manofmany.com%2Fwp-content%2Fuploads%2F2024%2F01%2FCBS.jpg&w=1200&q=75",
         page: <CasePractice/>
     }
-]}
+]
+//Ensuring that all of the cases are wrapped by case wrapper.
+.map(currentCase => {return {...currentCase, page:<CaseWrapper {...currentCase}/>}})
+}

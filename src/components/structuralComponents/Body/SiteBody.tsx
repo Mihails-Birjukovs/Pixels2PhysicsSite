@@ -34,7 +34,7 @@ export const SiteBody = ():JSX.Element => {
                     </Route>
                 })}
                 {cases.map(c => {
-                        return <Route path={constructFullCaseRoute(c.route)} element={<CaseWrapper {...c}/>}/>
+                        return <Route path={constructFullCaseRoute(c.route)} element={c.page}/>
                 })}
                 {routesLoaded && <Route path="*" element={<Navigate replace to={homeRoute.route} />}/>}
             </Routes>

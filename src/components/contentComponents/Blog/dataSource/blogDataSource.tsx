@@ -1,4 +1,5 @@
 import { ExampleBlog } from "../Blogs/ExampleBlog"
+import { BlogWrapper } from "../BlogWrapper";
 import type { IBlogData } from "../models/IBlogData"
 
 
@@ -27,4 +28,10 @@ export const getBlogSources = ():IBlogData[] =>{ return [
         publishDate: new Date(2025, 10),
         page: <ExampleBlog title="Test blog IV"/>
     }
-].sort((a,b) => (b?.publishDate?.getTime() ?? 0) - (a?.publishDate?.getTime() ?? 0))}
+]
+//Ensuring that blogs are always handled by the publishing dates.
+//TODO: make that a consumer's problem?
+.sort((a,b) => (b?.publishDate?.getTime() ?? 0) - (a?.publishDate?.getTime() ?? 0))
+//Ensuring that all of the blogs are wrapped by blog wrapper.
+.map(blog => {return {...blog, page:<BlogWrapper {...blog}/> }});
+}
